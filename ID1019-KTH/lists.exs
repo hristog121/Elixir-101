@@ -63,6 +63,6 @@ defmodule Lists do
   def unique_element([]) do [] end
   def unique_element([x|t]) do
         [x|unique_element(remove_element(x, t))]
-    end
+  end
 
 end

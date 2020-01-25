@@ -32,4 +32,21 @@ defmodule BinaryEncoding do
   def to_better(n, b) do
     to_better(div(n, 2), [rem(n, 2) | b])
   end
+
+  @doc """
+  TODO
+  Read the list. Check the position of the element and lift on pow2.
+  Index # ^ pow2
+  """
+  def bin_int(x) do
+    bin_int(x, 0)
+  end
+
+  def bin_int([], n) do
+   n
+  end
+  def bin_int([x | left], n) do
+    bin_int(left, n +  ( (rem(x, 2)) * (:math.pow(2,length(left)) ) ))
+  end
 end
+

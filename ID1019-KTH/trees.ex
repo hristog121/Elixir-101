@@ -15,23 +15,29 @@ defmodule Trees do
 
   #Insert element into the tree
   def insert(element, :nil)  do
-    {:node, element, :nil, :nil}
+    {:leaf, element}
   end
 
-  def insert(element, {:leaf, value}) when element < value  do
-        {:leaf, element }
+  def insert(element, {:leaf, value} = right) when element < value  do
+        {:node, element, :nil, right }
        end
 
-  def insert(element, {:leaf, value}) do
-      {:leaf, value }
+  def insert(element, {:leaf, _} = left) do
+      {:node, element, left, :nil }
   end
 
   def insert(element, {:node, value, left, right }) when element < value do
-    insert(element, left)
+    {:node, value, insert(element, left), right}
   end
 
   def insert(element, {:node, value, left, right })  do
-    insert(element, right )
+    {:node, value, left, insert(element, right)}
   end
+
+  #Delete elements in the tree
+  def delete(element, {:leaf, element}) do
+
+  end
+
 
 end
